@@ -3,51 +3,60 @@ import useFetch from "@/hooks/useFetch";
 import Loading from "@/components/UI/Loading";
 import FreelanceGrid from "@/components/freelance/FreelanceGrid";
 import styles from "./index.module.scss";
-import Title from "@/components/UI/Title";
-import Input from "@/components/UI/Input";
+import SearchBar from "@/components/UI/SearchBar";
+import ImageBanner from "@/components/UI/ImageBanner"
+import SearchFilter from "@/components/UI/SearchFilter"
 
 const Index = () => {
   const [searchString, setSearchString] = useState("");
-  const { data, error, loading, fetchData } = useFetch({url:"/user/freelance/", method:"GET", body:null, token:null});
-  const { data: searchData, error: searchError, loading: searchLoading, fetchData: searchFetchData } = useFetch({url:"/user/freelance/", method:"GET", params:{searchString: searchString}, token:null});
+  const [filters, setFilters] = useState({});
+  const [data, setData] = useState([]);
+  const { data: fullData, error, loading, fetchData } = useFetch({url:"/user/freelance/", method:"GET", body:null, token:null});
+  const { data: searchData, error: searchError, loading: searchLoading, fetchData: searchFetchData } = useFetch({url:`/user/freelance/search/${searchString}`, method:"GET", params:{searchString: searchString}, token:null});
+  const { data: filterData, error: filterError, loading: filterLoading, fetchData: filterFetchData } = useFetch({url:"/user/freelance/filter/", method:"POST", body:filters, token:null});
 
   useEffect(() => {
     fetchData();
   },[]);
 
-  console.log(data, "data")
-  console.log(searchData, "searchData")
 
-  const search = (e) => {
-    e.preventDefault();
-    console.log(e.target.search.value)
-    searchFetchData()
-  }
 
   useEffect(() => {
-    if (searchData) {
-      console.log(searchData, "searchData")
+    if (fullData !== undefined && fullData !== null && fullData.length > 0) {
+      setData(fullData)
     }
-  }, [searchData])  
+  }, [fullData])
+
+  useEffect(() => {
+    if (searchData !== undefined && searchData !== null && searchData.length > 0) {
+      setData(searchData)
+    }
+  }, [searchData])
+
+  useEffect(() => {
+    if (filterData !== undefined && filterData !== null && filterData.length > 0) {
+      setData(filterData)
+    }
+  }, [filterData])
 
 
 
-  if(loading) <Loading/> 
+  if(loading || searchLoading || filterLoading) return <Loading/> 
   if (error) console.log(error);
+  if (searchError) console.log(searchError);
+  if (filterError) console.log(filterError);
 
   return (
     <>
-      <Title Level="h1" title="Freelances" />
-      <div className={styles.search}>
-        <form onSubmit={(e) => search(e)}>
-          <Input type="text" name="search" placeholder="Search" onChange={(e) => setSearchString(e)}/>
-          <button type="submit">Search</button>
-        </form>
-      </div>
+      <ImageBanner  title="Find your next freelance" image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
       <div className={styles.container}>
-        {
-          <FreelanceGrid freelances={data}/>
-        }
+        <div className={styles.Left}>
+          <SearchFilter title="Filter your search" submit={filterFetchData} setFilters={setFilters} filters={filters}/>
+        </div>
+        <div className={styles.Right}>
+          <SearchBar title="Search for a freelance" submit={searchFetchData} setSearchString={setSearchString}/>
+          {data !== [] && data.length > 0 && data !== null ? <FreelanceGrid freelances={data}/> : <p>No freelances found</p>}
+        </div>
       </div>
     </>
   );

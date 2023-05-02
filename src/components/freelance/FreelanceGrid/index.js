@@ -2,7 +2,6 @@ import styles from "./index.module.scss";
 import FreelanceCard from "@/components/freelance/FreelanceCard";
 
 const Index = ({ freelances }) => {
-  console.log(freelances, "props freelance");
   return (
     <div className={styles.wrapper}>
       {

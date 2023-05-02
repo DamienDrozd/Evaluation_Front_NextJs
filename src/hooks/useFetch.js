@@ -28,7 +28,6 @@ const useFetch = ({ url, method, body, token }) => {
         throw new Error(dataJson.message);
       }
       dataJson.success = true;
-      console.log("dataJson : ", dataJson);
       setData(dataJson);
       setLoading(false)
     }

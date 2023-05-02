@@ -15,6 +15,7 @@ const Index = ({ label, name, options, onChange }) => {
                 name={name}
                 onChange={onChange}
             >
+                <option value="">--{label}--</option>
                 {options.map((option) => {
                     return <option key={option.id} value={JSON.stringify(option)} disabled={option.disabled}>{option.name}</option>
                 })}

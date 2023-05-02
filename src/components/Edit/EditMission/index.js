@@ -39,6 +39,8 @@ const Index = ({ setIsOpen, mission, updateMissions }) => {
     const submitForm = (e) => {
         e.preventDefault();
         console.log("token : ", token)
+        console.log("missionForm : ", missionForm)
+        console.log("edit : ", edit)
         if (token != undefined && token != null && token != ""){
             if (edit) {
                 fetchDataUpdate();
@@ -103,6 +105,9 @@ const Index = ({ setIsOpen, mission, updateMissions }) => {
     }, [dataUpdate, dataAppend]);
 
     useEffect(() => {
+        if (mission === undefined) {
+            setMissionForm({date:{}})
+        }
         fetchDataJobs();
         fetchDataSkills();
     }, []);

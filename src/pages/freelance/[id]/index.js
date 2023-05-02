@@ -7,6 +7,8 @@ import styles from "./index.module.scss";
 import UserContext from "@/context/UserContext";
 import Selector from "@/components/UI/Selector";
 import Notification from "@/components/UI/Notification";
+import ImageBanner from "@/components/UI/ImageBanner"
+import FreelanceDetail from "@/components/freelance/FreelanceDetail"
 
 const Index = () => {
 
@@ -87,33 +89,20 @@ const Index = () => {
 
   return (
     <div>
-      <div className={styles.thumbnail}>
-        <img src={freelance?.thumbnail} alt={freelance?.name} />
-      </div>
-      <div className={styles.content}>
-        <p>{freelance?.firstName}</p>
-        <p>{freelance?.lastName}</p>
-        <p>{freelance?.city}</p>
-        <p>{freelance?.country}</p>
-
-        <p>{freelance?.freelance?.price} €</p>
-        <p>{freelance?.freelance?.experience_years}</p>
-        {freelance?.freelance?.skills.map(skill => (
-          <p key={skill.id}>{skill.name}</p>
-        ))}
-        {freelance?.freelance?.jobs.map(job => (
-          <p key={job.id}>{job.name}</p>
-        ))}
-      </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <Selector
-          label="Missions"
-          name="missions"
-          options={missionsTitle}
-          onChange={(e) => handleChange(e)}
-        />
-        <Button title="Envoyer la proposition" className="btn__primary" type="submit" disabled={buttonDisabled} />
-      </form>
+      <ImageBanner  title={`${freelance?.firstName} ${freelance?.lastName}`} image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
+      <FreelanceDetail freelance={freelance}/>
+      {user.company &&
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <h3>Proposer une mission</h3>
+          <Selector
+            label="Missions"
+            name="missions"
+            options={missionsTitle}
+            onChange={(e) => handleChange(e)}
+          />
+          <Button title="Envoyer la proposition" className="btn__primary" type="submit" disabled={buttonDisabled} />
+        </form>
+      }
       {errorProposal && <Notification type="warning" message={errorProposal.stack} />}
       {errorMissions && <Notification type="warning" message={errorMissions.stack} />}
     </div>

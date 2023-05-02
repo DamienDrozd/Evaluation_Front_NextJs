@@ -13,6 +13,8 @@ const Index = () => {
     const [token, setToken] = useState(null);
     const {data: dataProposals, error:errorProposals, loading:loadingProposals, fetchData:fetchDataProposals} = useFetch({url:`/proposal/freelance/`, method:"GET", token:token})
 
+
+
     useEffect(() => {  
         const newToken = localStorage.getItem('token');
         if (newToken) {
@@ -22,40 +24,61 @@ const Index = () => {
 
     useEffect(() => {
         if( token != undefined) {
-            console.log("token : ", token)
             fetchDataProposals()
         }
     }, [token]);
 
+    
 
 
-    console.log("dataProposals : ", dataProposals)
-
-    if (loadingProposals) return <Loading />
+    if (loadingProposals ) return <Loading />
     if (errorProposals) console.log(errorProposals)
+    
   
     return (
         <div>
             <h1>freelance Dashboard</h1>
             <h2>Vos propositions de Mission : </h2>
             {dataProposals.success && dataProposals?.map((proposal) => {
-                return (
-                    <div key={proposal._id}>
-                        <h3>proposal : </h3>
-                        <p>{proposal.title}</p>
-                        <p>{proposal.description}</p>   
-                        <p>{proposal.date.start}</p>
-                        <p>{proposal.date.end}</p>  
-                        <p>{proposal.price}</p>
-                        <p>{proposal.status}</p>
-                        <p>{proposal.company.name}</p>
-                        <p>{proposal.company.address}</p>
-                    </div>
-                )
-
+                return <Proposal proposal={proposal} key={proposal._id} token={token}/>
             })}
         </div>
     );
+}
+
+const Proposal = ({proposal, token}) => {
+
+    const {data: dataAccept, error:errorAccept, loading:loadingAccept, fetchData:fetchAccept} = useFetch({url:`/proposal/freelance/accept/${proposal._id}`, method:"GET", token:token})
+    const {data: dataDeny, error:errorDeny, loading:loadingDeny, fetchData:fetchDeny} = useFetch({url:`/proposal/freelance/deny/${proposal._id}`, method:"GET", token:token})
+
+    const acceptProposal = () => {
+        fetchAccept()
+    }
+
+    const refuseProposal = () => {
+        fetchDeny()
+    }   
+
+    if (loadingAccept || loadingDeny) return <Loading />
+
+    if (errorAccept) console.log(errorAccept)
+    if (errorDeny) console.log(errorDeny)
+
+    return (
+        <div key={proposal._id}>
+            <h3>proposal : </h3>
+            <p>{proposal.mission?.title}</p>
+            <p>{proposal.mission?.description}</p>   
+            <p>{proposal.mission?.date?.start}</p>
+            <p>{proposal.mission?.date?.end}</p>  
+            <p>{proposal.mission?.price}</p>
+            <p>{proposal.mission?.status}</p>
+            <p>{proposal.company?.name}</p>
+            <p>{proposal.company?.address}</p>
+            <Button type="submit" title="accepter" className="btn__primary" handleClick={() => acceptProposal()}/>
+            <Button type="submit" title="refuser" className="btn__primary" handleClick={() => refuseProposal()}/>
+        </div>
+    )
 }
 
 export default Index;

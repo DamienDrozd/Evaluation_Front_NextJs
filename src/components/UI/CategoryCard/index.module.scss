@@ -1,0 +1,28 @@
+.category {
+    display: inline-block;
+    padding: 10px 15px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: 0.3s all;
+
+    &__job {
+        background: lightblue;
+        color: white;
+        border-radius: 30px;
+        padding: 5px 10px;
+        margin: 5px;
+        font-size: 12px;
+    }
+
+    &__skill {
+        background: lightblue;
+        color: white;
+        border-radius: 30px;
+        padding: 5px 10px;
+        margin: 5px;
+        font-size: 12px;
+    }
+}

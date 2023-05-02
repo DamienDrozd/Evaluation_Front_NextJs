@@ -1,5 +1,4 @@
 
-
 # évaluation NextJS Drozd Damien
 
 Réaliser le site de freelance a l'aide de l'API
@@ -7,16 +6,11 @@ Réaliser le site de freelance a l'aide de l'API
 
 ## A faire
 - Profile page Change password
-- recherche / consultation de freelance - homepage - Pas de login
-
-### A faire freelance
-- Voir propositions de mission
-- Accepter / refuser proposition
-
+- recherche
+- filtres
 
 ### A faire admin
 - consulter les missions et les propositions rattachées
-
 
 ### A faire a la fin
 - ranger par composants
@@ -41,6 +35,7 @@ Réaliser le site de freelance a l'aide de l'API
 - Profile page Company 
 - Fonctionalités soumis au login 
 - Login forgot password  
+- consultation de freelance 
 
 
 ### Fait Admin
@@ -54,3 +49,7 @@ Réaliser le site de freelance a l'aide de l'API
 - Modifier mission
 - supprimer mission
 - proposer mission a un freelance
+
+### Fait Freelance
+- Voir propositions de mission
+- Accepter / refuser proposition

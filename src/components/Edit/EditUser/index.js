@@ -1,14 +1,12 @@
-import styles from "./index.module.scss";
 import Modal from "@/components/UI/Modal";
 import useFetch from "@/hooks/useFetch";
 import Input from "@/components/UI/Input";
 import Loading from "@/components/UI/Loading";
 import Button from "@/components/UI/Button";
-import UserContext from "@/context/UserContext";
 import Selector from "@/components/UI/Selector";
 
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 
 
 
