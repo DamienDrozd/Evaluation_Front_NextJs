@@ -1,0 +1,134 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .content {
+        align-self: center;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.16);
+        border-radius: 4px;
+        width: 80vw;
+        padding: 20px;
+
+        &:hover {
+            border-color: #000;
+        }
+
+        img {
+            object-fit: cover;
+            border-radius: 100%;
+            width: 20vw;
+            height: 20vw;
+            margin-left: 10vw;
+        }
+
+        .textDiv {
+            padding: 20px;
+            margin-left: 5vw;
+            margin-top: 3vw;
+
+
+            h3 {
+                margin: 0 0 10px;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 22px;
+                font-weight: bold;
+            }
+
+            p {
+                margin: 0;
+                font-weight: 400;
+                line-height: 22px;
+            }
+
+            .descriptionDiv {
+                margin-top: 2vw;
+                margin-bottom: 2vw;
+                display: flex;
+
+                .priceDiv {
+                    background-color: red;
+                    color: white;
+                    padding: 10px;
+                    width: 20vw;
+                }
+
+                .experienceDiv {
+                    background-color: white;
+                    border: 1px solid lightgray;
+                    padding: 10px;
+                    width: 20vw;
+                }
+            }
+
+
+
+            .centerDiv {
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        }
+    }
+
+    .secondary_content {
+
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        .BoxDiv {
+            margin-left: 5vw;
+            margin-top: 3vw;
+            border: 1px solid lightgray;
+            padding: 10px;
+            width: auto;
+            background-color: #fff;
+
+            h4 {
+
+                margin: 0;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 22px;
+                font-weight: bold;
+            }
+
+            p {
+                margin: 0;
+                font-weight: 400;
+                line-height: 22px;
+            }
+
+            .competences {
+                margin-top: 3vw;
+                padding: 10px;
+                display: flex;
+
+
+                .jobDiv {
+                    margin: 20px;
+                }
+
+                .separationDiv {
+                    width: 0px;
+                    border: 0.5px solid lightgray;
+                }
+
+                .skillDiv {
+                    margin: 20px;
+                }
+            }
+
+
+        }
+
+    }
+
+}
