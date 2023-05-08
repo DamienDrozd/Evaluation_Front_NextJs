@@ -85,7 +85,7 @@ const Index = () => {
 
   return (
     <div>
-      <ImageBanner  title={`${freelance?.firstName} ${freelance?.lastName}`} image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
+      <ImageBanner  title={`${freelance?.firstName} ${freelance?.lastName}`} image="https://512pixels.net/wp-content/uploads/2022/06/13-Ventura-Light-thumb-500x500.jpg"/>
       <UserDetail user={freelance}/>
       {user.company &&
         <Card>

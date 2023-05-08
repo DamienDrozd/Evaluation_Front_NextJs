@@ -47,7 +47,7 @@ const Index = () => {
                     <EditMission setIsOpen={setIsOpen} mission={editMission} updateMissions={fetchMissions} />
                 )
             }
-            <ImageBanner  title={`Missions`} image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
+            <ImageBanner  title={`Missions`} image="https://512pixels.net/wp-content/uploads/2021/06/12-Light-thumbnail-500x500.jpg"/>
 
             <Button title="Ajouter" className="btn__primary" type="button" handleClick={ 
                 () => {

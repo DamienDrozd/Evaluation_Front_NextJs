@@ -48,7 +48,7 @@ const Index = ({submit, title, setFilters, filters}) => {
         <div className={styles.filters}>
             <form onSubmit={(e) => submit(e)}>
                 <div className={styles.center}>
-                    <Button type="submit" title="search" className="btn__primary" />
+                    <Button type="submit" title="Rechercher" className="btn__primary" />
                 </div>
                 {/* price min */}
                 <Input value={filters["price_min"]} type="number" name="price_min" placeholder="prix minimum" onChange={(e) => setFilters({...setFilters, price_min: e.target.value})}/>

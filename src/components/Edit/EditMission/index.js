@@ -167,7 +167,7 @@ const Index = ({ setIsOpen, mission, updateMissions }) => {
                         <Selector
                         label="jobs"
                         name="jobs"
-                        value={missionForm?.jobs}
+                        value={missionForm?.job}
                         isRequired={true}   
                         placeholder="enter your jobs"
                         onChange={(e) => missionAppendList(e)}
@@ -176,7 +176,7 @@ const Index = ({ setIsOpen, mission, updateMissions }) => {
                     )   
                 }
                 <p>jobs : {missionForm?.jobs?.map((job) => {
-                    return <Button type="button" key={job.id} title={job.name} value={JSON.stringify(job)} className="btn_delete" name="jobs" handleClick={missionRemoveList} />
+                    return <Button type="button" key={job.id} title={job.name} value={JSON.stringify(job)} className="btn__remove" name="jobs" handleClick={missionRemoveList} />
                 } 
                 )}</p>
                 {
@@ -194,7 +194,7 @@ const Index = ({ setIsOpen, mission, updateMissions }) => {
                 }
 
                 <p>skills : {missionForm?.skills?.map((skill) => {
-                    return <Button type="button" key={skill.id} title={skill.name} value={JSON.stringify(skill)} className="btn_delete" name="skills" handleClick={missionRemoveList} />
+                    return <Button type="button" key={skill.id} title={skill.name} value={JSON.stringify(skill)} className="btn__remove" name="skills" handleClick={missionRemoveList} />
                 }
                 )}</p>
                 {edit && <Button type="submit" title="modifier" className="btn__primary"/> || <Button type="submit" title="ajouter" className="btn__primary"/>}

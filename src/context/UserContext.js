@@ -25,7 +25,8 @@ export const UserContextProvider = ({ children }) => {
 
   const autorizePath = ["/", "/freelance/[id]", "/auth/login", "/auth/register", "/auth/forgot-password", "/auth/register/freelance", "/auth/register/company"]
 
-  const adminPath = ["/", "/freelance/[id]", "/admin", "/admin/user", "/admin/company", "/admin/skill", "/admin/job", "/admin/mission"]
+  const adminPath = ["/admin", "/admin/user", "/admin/company", "/admin/skill", "/admin/job", "/admin/mission"]
+
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -52,9 +53,13 @@ export const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (isLogged){
-      if (user.isAdmin && !adminPath.includes(router.pathname)) {
-        router.push("/admin")
-      }else if (!user.isAdmin && adminPath.includes(router.pathname)) {
+      if (!isAdmin) {
+        if (adminPath.includes(router.pathname)) {
+          router.push("/")
+        }
+      }
+    } else {
+      if (!autorizePath.includes(router.pathname)) {
         router.push("/")
       }
     }
@@ -63,6 +68,8 @@ export const UserContextProvider = ({ children }) => {
   const login = (data) => {
     if (data.isAdmin) {
       setIsAdmin(true)
+    } else {
+      setIsAdmin(false)
     }
     setUser(data)
     setIsLogged(true)

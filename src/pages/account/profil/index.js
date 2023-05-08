@@ -27,7 +27,7 @@ const Index = () => {
           <EditCompany setIsOpen={setIsOpenCompany} Company={user?.company} isAdmin={false} updateCompanys={fetchUser} />
         )
       }
-      <ImageBanner  title={`Votre profil`} image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
+      <ImageBanner  title={`Votre profil`} image="https://ryder-daviesvets.co.uk/wp-content/uploads/2016/03/computer-desktop-wallpaper-300x188.jpg"/>
       <UserDetail user={user}/>
       <div className={styles.center}>
         <Button title="modifier le profil" className="btn__primary" type="button" handleClick={ 
@@ -35,12 +35,13 @@ const Index = () => {
             setIsOpenUser(true);
           }
         } />
-        
-        <Button title="modifier l'entreprise" className="btn__primary" type="button" handleClick={ 
-          () => {
-            setIsOpenCompany(true);
-          }
-        } />
+        { user?.company && (
+          <Button title="modifier l'entreprise" className="btn__primary" type="button" handleClick={ 
+            () => {
+              setIsOpenCompany(true);
+            }
+          } />
+        )}
       </div>
 
     </div>

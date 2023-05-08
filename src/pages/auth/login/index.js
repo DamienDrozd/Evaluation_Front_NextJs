@@ -54,7 +54,7 @@ const Index = () => {
   return (
     <>
       <Loading isLoad={loading} />
-      <Title title="Login" Level="h1" />
+      <Title title="Connexion" Level="h1" />
       <form onSubmit={(e)=>submitLogin(e)}>
         <Input
         label="Email"

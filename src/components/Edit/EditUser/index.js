@@ -187,7 +187,7 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
                             )   
                         }
                         <p>jobs : {user?.freelance?.jobs?.map((job) => {
-                            return <Button type="button" key={job.id} title={job.name} value={JSON.stringify(job)} className="btn_delete" name="jobs" handleClick={freelanceRemoveList} />
+                            return <Button type="button" key={job.id} title={job.name} value={JSON.stringify(job)} className="btn__remove" name="jobs" handleClick={freelanceRemoveList} />
                         } 
                         )}</p>
                         {
@@ -205,7 +205,7 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
                         }
 
                         <p>skills : {user?.freelance?.skills?.map((skill) => {
-                            return <Button type="button" key={skill.id} title={skill.name} value={JSON.stringify(skill)} className="btn_delete" name="skills" handleClick={freelanceRemoveList} />
+                            return <Button type="button" key={skill.id} title={skill.name} value={JSON.stringify(skill)} className="btn__remove" name="skills" handleClick={freelanceRemoveList} />
                         }
                         )}</p>
                     </>

@@ -36,7 +36,7 @@ const Index = ({userForm, handleChange, freelanceAppendList, freelanceRemoveList
           options={jobs}
         />
         <p>jobs : {userForm?.jobs?.map((job) => {
-          return <CategoryCard key={job.id} title={job.name} className="category__job"/>
+          return <Button type="button" key={job.id} title={job.name} value={JSON.stringify(job)} className="btn__remove" name="jobs" handleClick={freelanceRemoveList} />
         } 
         )}</p>
                 
@@ -50,7 +50,7 @@ const Index = ({userForm, handleChange, freelanceAppendList, freelanceRemoveList
           options={skills}    
         />
         <p>skills : {userForm?.skills?.map((skill) => {
-        return <CategoryCard key={skill.id} title={skill.name} className="category__skill"/>
+          return <Button type="button" key={skill.id} title={skill.name} value={JSON.stringify(skill)} className="btn__remove" name="skills" handleClick={freelanceRemoveList} />
         }
         )}</p>
     </>

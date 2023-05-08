@@ -48,13 +48,13 @@ const Index = () => {
 
   return (
     <>
-      <ImageBanner  title="Find your next freelance" image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
+      <ImageBanner  title="Trouvez votre prochain Freelance" image="https://512pixels.net/wp-content/uploads/2020/06/11-0-Color-Day-thumbnails-500x500.jpg"/>
       <div className={styles.container}>
         <div className={styles.Left}>
           <SearchFilter title="Filter your search" submit={filterFetchData} setFilters={setFilters} filters={filters}/>
         </div>
         <div className={styles.Right}>
-          <SearchBar title="Search for a freelance" submit={searchFetchData} setSearchString={setSearchString}/>
+          <SearchBar title="Rechercher" submit={searchFetchData} setSearchString={setSearchString}/>
           {data !== [] && data.length > 0 && data !== null ? <FreelanceGrid freelances={data}/> : <p>No freelances found</p>}
         </div>
       </div>

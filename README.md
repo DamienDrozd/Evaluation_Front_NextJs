@@ -14,21 +14,13 @@ executer la commande """docker-compose up -d """
 ## A faire
 - Profile page Change password
 
-
 ### A faire admin
-- consulter les missions et les propositions rattachées
+- consulter propositions 
 
 ### A faire a la fin
 - ranger par composants
-- style
-- nom du site
-- Textes en Français
-- logo
-- images banières
 
-### A faire Entreprise bonus
-- Voir les propositions envoyés
-- Supprimer proposition envoyé
+
 
 
 ## Fait 
@@ -51,6 +43,7 @@ executer la commande """docker-compose up -d """
 - d’ajouter/modifier/supprimer des métiers
 - consulter tous les utilisateurs de l’application (entreprise et freelance)
 - Supprimer un utilisateur
+- consulter les missions
 
 ### Fait Entreprise
 - Créer mission
@@ -65,3 +58,9 @@ executer la commande """docker-compose up -d """
 ### Fait style 
 - typos
 - couleurs
+- style
+- nom du site
+- logo
+- Textes en Français
+- images banières
+
