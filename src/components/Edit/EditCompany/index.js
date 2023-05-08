@@ -1,4 +1,3 @@
-import styles from "./index.module.scss";
 import Modal from "@/components/UI/Modal";
 import useFetch from "@/hooks/useFetch";
 import Input from "@/components/UI/Input";
@@ -24,7 +23,6 @@ const Index = ({ setIsOpen, Company, updateCompanys, isAdmin }) => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log("token : ", token)
         if (token != undefined && token != null && token != ""){
             if (isAdmin !== false) {
                 fetchDataAdminUpdate();

@@ -3,11 +3,17 @@
 
 Réaliser le site de freelance a l'aide de l'API
 
+## Pour lancer l'API
+executer la commande """docker-compose up -d """
+
+## Admin connextion:
+- User : Admin
+- Password : root
+
 
 ## A faire
 - Profile page Change password
-- recherche
-- filtres
+
 
 ### A faire admin
 - consulter les missions et les propositions rattachées
@@ -15,10 +21,10 @@ Réaliser le site de freelance a l'aide de l'API
 ### A faire a la fin
 - ranger par composants
 - style
-- typos
 - nom du site
-- couleurs
 - Textes en Français
+- logo
+- images banières
 
 ### A faire Entreprise bonus
 - Voir les propositions envoyés
@@ -36,6 +42,8 @@ Réaliser le site de freelance a l'aide de l'API
 - Fonctionalités soumis au login 
 - Login forgot password  
 - consultation de freelance 
+- recherche
+- filtres
 
 
 ### Fait Admin
@@ -53,3 +61,7 @@ Réaliser le site de freelance a l'aide de l'API
 ### Fait Freelance
 - Voir propositions de mission
 - Accepter / refuser proposition
+
+### Fait style 
+- typos
+- couleurs

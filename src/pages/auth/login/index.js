@@ -8,6 +8,8 @@ import Button from "@/components/UI/Button/";
 import Title from "@/components/UI/Title";
 import Loading from "@/components/UI/Loading";
 import Notification from "@/components/UI/Notification";
+import ButtonLink from '@/components/UI/ButtonLink';
+
 
 const Index = () => {
 
@@ -83,10 +85,10 @@ const Index = () => {
         )
       }
       <p>
-        Vous n'avez pas de compte ? <Link href="/auth/register">Inscrivez-vous ?</Link>
+        Vous n'avez pas de compte ?  <ButtonLink title="Inscrivez-vous !" className={"btn__link"} link="/auth/register"  />
       </p>
       <p>
-        Vous avez oublié votre mot de passe ? <Link href="/auth/forgot-password">Cliquez ici</Link>
+        Vous avez oublié votre mot de passe ? <ButtonLink title="Réinitialiser" className={"btn__link"} link="/auth/forgot-password"  />
       </p>
       <p>
         

@@ -27,7 +27,6 @@ const Index = ({ setIsOpen, job, updateJobs }) => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log("token : ", token)
         if (token != undefined && token != null && token != ""){
             if (edit) {
                 fetchDataUpdate();

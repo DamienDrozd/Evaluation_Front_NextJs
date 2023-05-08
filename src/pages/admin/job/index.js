@@ -3,6 +3,11 @@ import useFetch from "@/hooks/useFetch";
 import Loading from "@/components/UI/Loading";
 import Button from "@/components/UI/Button";
 import EditJob from "@/components/Edit/EditJob";
+import Card from "@/components/UI/Card";
+import ImageBanner from "@/components/UI/ImageBanner";
+
+
+
 
 
 const Index = () => {  
@@ -47,7 +52,7 @@ const Index = () => {
                     <EditJob setIsOpen={setIsOpen} job={editJob} updateJobs={fetchJobs} />
                 )
             }
-            <h1>Jobs</h1>
+            <ImageBanner  title="Jobs" image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
             <Button title="Ajouter" className="btn__primary" type="button" handleClick={ 
                 () => {
                     setIsOpen(true)
@@ -55,7 +60,7 @@ const Index = () => {
                 } } 
             />
             { Array.isArray(dataJobs) && dataJobs.map(job => (
-                <div key={job._id}>
+                <Card key={job._id}>
                     <p>{job.name}</p>
                     <Button title="modifier" className="btn__primary" type="button" handleClick={ 
                         () => {
@@ -68,7 +73,7 @@ const Index = () => {
                             setDeleteJob(job);
                         }
                     } />
-                </div>
+                </Card>
             ))}
         </div>
     );

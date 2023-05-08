@@ -23,9 +23,9 @@ export const UserContextProvider = ({ children }) => {
 
   const { data, error, loading, fetchData } = useFetch({ url: "/user", method: "GET", body: null, token: token });
 
-  const autorizePath = ["/", "/auth/login", "/auth/register", "/auth/forgot-password", "/auth/register/freelance", "/auth/register/company"]
+  const autorizePath = ["/", "/freelance/[id]", "/auth/login", "/auth/register", "/auth/forgot-password", "/auth/register/freelance", "/auth/register/company"]
 
-  const adminPath = ["/admin", "/admin/user", "/admin/company", "/admin/skill", "/admin/job"]
+  const adminPath = ["/", "/freelance/[id]", "/admin", "/admin/user", "/admin/company", "/admin/skill", "/admin/job", "/admin/mission"]
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -52,7 +52,6 @@ export const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (isLogged){
-      console.log("router.pathname : ", router.pathname)
       if (user.isAdmin && !adminPath.includes(router.pathname)) {
         router.push("/admin")
       }else if (!user.isAdmin && adminPath.includes(router.pathname)) {
@@ -62,7 +61,6 @@ export const UserContextProvider = ({ children }) => {
   }, [user, router])
 
   const login = (data) => {
-    console.log("data : ", data)
     if (data.isAdmin) {
       setIsAdmin(true)
     }

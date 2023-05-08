@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import FreelanceCard from "@/components/freelance/FreelanceCard";
+import FreelanceCard from "@/components/user/FreelanceCard";
 
 const Index = ({ freelances }) => {
   return (

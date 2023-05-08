@@ -48,7 +48,6 @@ const Index = () => {
     if (index === -1) {
         freelance[e.target.name].push(appendObj)
         setUserForm(freelance)
-        console.log("new value : ", userForm[e.target.name])
     } else {
         console.log("value already exist")
     }
@@ -70,15 +69,13 @@ const Index = () => {
   }
 
   const submitRegister = (e) => {
-    e.preventDefault();
-    console.log(userForm);
-    
+    e.preventDefault();    
     
     if(userForm.password !== userForm.confirmPassword && userForm.confirmPassword !== undefined ){
       setFormError('Les mots de passe ne correspondent pas');
-      return console.log('Les mots de passe ne correspondent pas');
     } else {
       setFormError(null);
+      setPhaseNumber(PhaseNumber + 1);
     }
     if( PhaseNumber === 2 ){
       fetchData();
@@ -87,8 +84,6 @@ const Index = () => {
   }
 
   useEffect(() => {
-    console.log(error)
-    console.log(data)
     if (data !== undefined && data !== null && data !== {} && data.token !== undefined ) {
       localStorage.setItem('token', data.token);
       router.push('/account/profil')
@@ -134,7 +129,6 @@ const Index = () => {
                 type="submit"
                 title="Suivant"
                 className="btn__secondary"
-                handleClick={() => setPhaseNumber(PhaseNumber + 1)}
             />
         </form>
       

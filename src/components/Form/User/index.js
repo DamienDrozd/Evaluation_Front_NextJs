@@ -72,12 +72,12 @@ const Index = ({userForm, handleChange, edit}) => {
         />
         <Input
           label="Code postal"
-          type="postCode"
-          name="postCode"   
+          type="postcode"
+          name="postcode"   
           placeholder="veuillez saisir votre code postal" 
           isRequired={true}
           onChange={(e) => handleChange(e)} 
-          value={userForm?.postCode}
+          value={userForm?.postcode}
         />
         <Input
           label="Ville"

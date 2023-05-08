@@ -1,9 +1,9 @@
-import Modal from "@/components/UI/Modal";
 import useFetch from "@/hooks/useFetch";
-import Input from "@/components/UI/Input";
 import Loading from "@/components/UI/Loading";
 import Button from "@/components/UI/Button";
-import Selector from "@/components/UI/Selector";
+import Card from "@/components/UI/Card";
+import ImageBanner from "@/components/UI/ImageBanner";
+import CardProposal from "@/components/UI/CardProposal";
 
 
 import { useEffect, useState, useContext } from "react";
@@ -37,48 +37,14 @@ const Index = () => {
   
     return (
         <div>
-            <h1>freelance Dashboard</h1>
-            <h2>Vos propositions de Mission : </h2>
+            <ImageBanner  title={`Propositions`} image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
             {dataProposals.success && dataProposals?.map((proposal) => {
-                return <Proposal proposal={proposal} key={proposal._id} token={token}/>
+                return <CardProposal proposal={proposal} key={proposal._id} token={token}/>
             })}
         </div>
     );
 }
 
-const Proposal = ({proposal, token}) => {
 
-    const {data: dataAccept, error:errorAccept, loading:loadingAccept, fetchData:fetchAccept} = useFetch({url:`/proposal/freelance/accept/${proposal._id}`, method:"GET", token:token})
-    const {data: dataDeny, error:errorDeny, loading:loadingDeny, fetchData:fetchDeny} = useFetch({url:`/proposal/freelance/deny/${proposal._id}`, method:"GET", token:token})
-
-    const acceptProposal = () => {
-        fetchAccept()
-    }
-
-    const refuseProposal = () => {
-        fetchDeny()
-    }   
-
-    if (loadingAccept || loadingDeny) return <Loading />
-
-    if (errorAccept) console.log(errorAccept)
-    if (errorDeny) console.log(errorDeny)
-
-    return (
-        <div key={proposal._id}>
-            <h3>proposal : </h3>
-            <p>{proposal.mission?.title}</p>
-            <p>{proposal.mission?.description}</p>   
-            <p>{proposal.mission?.date?.start}</p>
-            <p>{proposal.mission?.date?.end}</p>  
-            <p>{proposal.mission?.price}</p>
-            <p>{proposal.mission?.status}</p>
-            <p>{proposal.company?.name}</p>
-            <p>{proposal.company?.address}</p>
-            <Button type="submit" title="accepter" className="btn__primary" handleClick={() => acceptProposal()}/>
-            <Button type="submit" title="refuser" className="btn__primary" handleClick={() => refuseProposal()}/>
-        </div>
-    )
-}
 
 export default Index;

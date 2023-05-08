@@ -1,6 +1,7 @@
 import Input from "@/components/UI/Input";
 import Selector from "@/components/UI/Selector";
 import Button from "@/components/UI/Button";
+import CategoryCard from "@/components/UI/CategoryCard";
 
 const Index = ({userForm, handleChange, freelanceAppendList, freelanceRemoveList, skills, jobs}) => {
   return (
@@ -35,7 +36,7 @@ const Index = ({userForm, handleChange, freelanceAppendList, freelanceRemoveList
           options={jobs}
         />
         <p>jobs : {userForm?.jobs?.map((job) => {
-        return <Button type="button" key={job.id} title={job.name} value={JSON.stringify(job)} className="btn_delete" name="jobs" handleClick={freelanceRemoveList} />
+          return <CategoryCard key={job.id} title={job.name} className="category__job"/>
         } 
         )}</p>
                 
@@ -49,7 +50,7 @@ const Index = ({userForm, handleChange, freelanceAppendList, freelanceRemoveList
           options={skills}    
         />
         <p>skills : {userForm?.skills?.map((skill) => {
-        return <Button type="button" key={skill.id} title={skill.name} value={JSON.stringify(skill)} className="btn_delete" name="skills" handleClick={freelanceRemoveList} />
+        return <CategoryCard key={skill.id} title={skill.name} className="category__skill"/>
         }
         )}</p>
     </>

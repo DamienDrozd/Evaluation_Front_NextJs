@@ -2,7 +2,7 @@
 import { useRouter } from "next/router";
 import styles from "./index.module.scss";
 import UserContext from "@/context/UserContext";
-import Logo from "../../../../public/images/logo/logo.svg";
+import Logo from "../../../../public/images/logo/logo.png";
 import NavItem from "@/components/UI/NavItem";
 import Button from "@/components/UI/Button";
 
@@ -60,7 +60,7 @@ const Index = () => {
       title: "company",
       link: "/admin/company",
       className:styles.nav__item
-    },
+    }
   ]
 
   const freelanceMenu = [

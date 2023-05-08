@@ -27,7 +27,6 @@ const Index = ({ setIsOpen, Skill, updateSkills }) => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log("token : ", token)
         if (token != undefined && token != null && token != ""){
             if (edit) {
                 fetchDataUpdate();

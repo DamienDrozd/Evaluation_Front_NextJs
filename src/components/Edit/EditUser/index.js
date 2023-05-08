@@ -31,7 +31,6 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
         if (freelance[e.target.name].includes(appendObj.name) === false) {
             freelance[e.target.name].push(appendObj)
             setUserForm({ ...userForm, freelance: freelance })
-            console.log("new value : ", userForm.freelance[e.target.name])
         } else {
             console.log("value already exist")
         }
@@ -40,15 +39,10 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
     const freelanceRemoveList = (e) => {
         let freelance = {...userForm.freelance}
         let removeObj = JSON.parse(e.target.value)
-        console.log("freelance[e.target.name] : ", freelance[e.target.name])
-        console.log("removeObj : ", removeObj)
         let index = freelance[e.target.name].findIndex(obj => JSON.stringify(obj) === JSON.stringify(removeObj))
-        console.log("index : ", index  )
         if (index > -1) {
             freelance[e.target.name].splice(index, 1);
-            
             setUserForm({ ...userForm, freelance: freelance })
-            console.log("new value : ", userForm.freelance[e.target.name])
         } else {
             console.log("value no exist")
         }
@@ -56,7 +50,6 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log("token : ", token)
         if (token != undefined && token != null && token != ""){
             fetchDataUpdate();
         }
@@ -70,7 +63,6 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
     }, [])
 
     useEffect(() => {
-        console.log(user)
         if( user != undefined) {
             setUserForm(user)
         }
@@ -87,6 +79,7 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
         fetchDataJobs();
         fetchDataSkills();
     }, []);
+
 
     if (loadingUpdate || loadingJobs || loadingSkills) return <Loading />
     if (errorUpdate) console.log(errorUpdate);
@@ -143,7 +136,7 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
                 />
                 <Input
                 label="postcode"
-                type="text"
+                type="number"
                 name="postcode"   
                 value={userForm?.postcode}
                 isRequired={true}   
@@ -152,7 +145,7 @@ const Index = ({ setIsOpen, user, updateUsers }) => {
                 />
                 <Input
                 label="city"
-                type="text"
+                type="number"
                 name="city"   
                 value={userForm?.city}
                 isRequired={true}

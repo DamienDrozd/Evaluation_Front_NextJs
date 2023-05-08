@@ -40,12 +40,15 @@
     }
 
     &__secondary {
-        background: white;
-        border: 1px solid black;
+        background: #E7414D;
+        color: white;
+        border: 1px solid #E7414D;
+        border-radius: 30px;
 
         &:hover {
-            background: black;
-            color: white;
+            background: white;
+            border: 1px solid #E7414D;
+            color: #E7414D;
         }
     }
 

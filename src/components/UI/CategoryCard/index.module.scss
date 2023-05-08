@@ -1,12 +1,6 @@
 .category {
-    display: inline-block;
-    padding: 10px 15px;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    transition: 0.3s all;
+
+
 
     &__job {
         background: lightblue;
@@ -15,6 +9,8 @@
         padding: 5px 10px;
         margin: 5px;
         font-size: 12px;
+        width: auto;
+        display: inline-block;
     }
 
     &__skill {
@@ -24,5 +20,7 @@
         padding: 5px 10px;
         margin: 5px;
         font-size: 12px;
+        width: auto;
+        display: inline-block;
     }
 }

@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
 
-const Index = ({ type, title, handleClick, className, disabled, name, value }) => {
+const Index = ({ title, className}) => {
   return (
     <div className={`${styles.btn} ${styles[className]}`}>
       <p>{title}</p>

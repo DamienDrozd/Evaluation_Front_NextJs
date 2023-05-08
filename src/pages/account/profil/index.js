@@ -3,7 +3,9 @@ import UserContext from "@/context/UserContext";
 import Button from "@/components/UI/Button";
 import EditProfile from "@/components/Edit/EditProfile";
 import EditCompany from "@/components/Edit/EditCompany";
-import Link from "next/link";
+import UserDetail from "@/components/user/UserDetail"
+import styles from "./index.module.scss";
+import ImageBanner from "@/components/UI/ImageBanner"
 
 
 const Index = () => {  
@@ -17,7 +19,7 @@ const Index = () => {
     <div>
       {
         isOpenUser && (
-          <EditProfile setIsOpen={setIsOpenUser} />
+          <EditProfile setIsOpen={setIsOpenUser} user={user} updateUser={fetchUser} />
         )
       }
       {
@@ -25,60 +27,22 @@ const Index = () => {
           <EditCompany setIsOpen={setIsOpenCompany} Company={user?.company} isAdmin={false} updateCompanys={fetchUser} />
         )
       }
-      <p>Profil page</p>
-      {
-        user && (
-          <>
-            <p>Firstname : {user?.firstName}</p>
-            <p>LastName : {user?.lastName}</p>
-            <p>Email : {user?.email}</p>
-            <p>Address : {user?.address}</p>
-            <p>Phone : {user?.phone}</p>
-            <p>post code : {user?.postcode}</p>
-            <p>city : {user?.city}</p>
-          </>
-        )
-      }
-      {
-        user?.freelance != null && (
-          <>
-            <p>Freelance</p>
-            <p>experience_years : {user?.freelance.experience_years} </p>
-            <p>jobs : {user?.freelance.jobs.map((job) => {
-                return <p key={job.id}>{job.name}</p>
-              }
-            )}</p>
-            <p>price : {user?.freelance.price}</p>
-            <p>skills : {user?.freelance.skills.map((skill) => {
-                return <p key={skill.id}>{skill.name}</p>
-              }
-            )}</p>
-          </>
-        )
-      }
-      <Button title="modifier" className="btn__primary" type="button" handleClick={ 
-        () => {
-          setIsOpenUser(true);
-        }
-      } />
-      {
-        user?.company != null && (
-          <>
-            <p>Company</p>
-            <p>name : {user?.company.name}</p>
-            <p>status : {user?.company.status}</p>
-            <p>siret : {user?.company.siret}</p>
-            <p>address : {user?.company.address}</p>
-            <p>city : {user?.company.city}</p>
-            <p>postcode : {user?.company.postcode}</p>
-          </>
-        )
-      }
-      <Button title="modifier" className="btn__primary" type="button" handleClick={ 
-        () => {
-          setIsOpenCompany(true);
-        }
-      } />
+      <ImageBanner  title={`Votre profil`} image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
+      <UserDetail user={user}/>
+      <div className={styles.center}>
+        <Button title="modifier le profil" className="btn__primary" type="button" handleClick={ 
+          () => {
+            setIsOpenUser(true);
+          }
+        } />
+        
+        <Button title="modifier l'entreprise" className="btn__primary" type="button" handleClick={ 
+          () => {
+            setIsOpenCompany(true);
+          }
+        } />
+      </div>
+
     </div>
   );
 }

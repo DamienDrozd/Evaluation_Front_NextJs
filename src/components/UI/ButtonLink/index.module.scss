@@ -37,4 +37,72 @@
             color: white;
         }
     }
+
+    &__register {
+
+
+        &__company {
+            background: #E7414D;
+            color: white;
+            border: 1px solid #E7414D;
+            border-radius: 5px;
+            width: 100%;
+            margin: 10px;
+
+            &:hover {
+                background: white;
+                border: 1px solid #E7414D;
+                color: #E7414D;
+            }
+        }
+
+        &__freelance {
+            background: #E7414D;
+            color: white;
+            border: 1px solid #E7414D;
+            border-radius: 5px;
+            width: 100%;
+            margin: 10px;
+
+            &:hover {
+                background: white;
+                border: 1px solid #E7414D;
+                color: #E7414D;
+            }
+        }
+
+    }
+
+    &__link {
+        background: none;
+        border: none;
+        color: #E7414D;
+        font-size: 18px;
+        font-weight: 400;
+        text-decoration: underline;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        transition: 0.3s all;
+
+        &:hover {
+            color: black;
+            text-decoration: none;
+        }
+    }
+
+    &__admin {
+        background: #E7414D;
+        color: white;
+        border: 1px solid #E7414D;
+        border-radius: 5px;
+        width: 20%;
+        margin: 10px;
+
+        &:hover {
+            background: white;
+            border: 1px solid #E7414D;
+            color: #E7414D;
+        }
+    }
 }

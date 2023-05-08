@@ -1,11 +1,9 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
-import Link from "next/link";
 import Title from '@/components/UI/Title';
 import Button from "@/components/UI/Button";
 import Notification from "@/components/UI/Notification";
 import useFetch from '@/hooks/useFetch';
-import Selector from "@/components/UI/Selector";
 import CompanyForm from "@/components/Form/Company";
 import UserForm from "@/components/Form/User";
 import Loading from "@/components/UI/Loading";
@@ -37,7 +35,6 @@ const Index = () => {
 
   const submitRegister = (e) => {
     e.preventDefault();    
-    console.log(PhaseNumber)
     if(userForm.password !== userForm.confirmPassword && userForm.confirmPassword !== undefined ){
         setFormError('Les mots de passe ne correspondent pas');
         return console.log('Les mots de passe ne correspondent pas');
@@ -52,8 +49,6 @@ const Index = () => {
   }
 
   useEffect(() => {
-    console.log(error)
-    console.log(data)
     if (data !== undefined && data !== null && data !== {} && data.token !== undefined ) {
       localStorage.setItem('token', data.token);
       router.push('/account/profil')

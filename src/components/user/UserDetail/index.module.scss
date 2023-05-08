@@ -51,8 +51,8 @@
                 display: flex;
 
                 .priceDiv {
-                    background-color: red;
-                    color: white;
+                    background-color: lightblue;
+                    color: black;
                     padding: 10px;
                     width: 20vw;
                 }
@@ -86,13 +86,22 @@
         .BoxDiv {
             margin-left: 5vw;
             margin-top: 3vw;
-            border: 1px solid lightgray;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.16);
+            border-radius: 4px;
             padding: 10px;
             width: auto;
             background-color: #fff;
 
             h4 {
 
+                margin: 0;
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 22px;
+                font-weight: bold;
+            }
+
+            h5 {
                 margin: 0;
                 font-size: 18px;
                 font-weight: 400;
@@ -111,9 +120,10 @@
                 padding: 10px;
                 display: flex;
 
-
                 .jobDiv {
                     margin: 20px;
+                    display: flex;
+                    flex-direction: column;
                 }
 
                 .separationDiv {
@@ -123,6 +133,30 @@
 
                 .skillDiv {
                     margin: 20px;
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
+            .company {
+                margin-top: 3vw;
+                padding: 10px;
+                display: flex;
+
+
+
+
+                &__address {
+                    margin: 20px;
+                }
+
+                &__info {
+                    margin: 20px;
+                }
+
+                &__separator {
+                    width: 0px;
+                    border: 0.5px solid lightgray;
                 }
             }
 

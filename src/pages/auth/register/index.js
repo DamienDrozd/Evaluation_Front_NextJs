@@ -1,12 +1,6 @@
-import { useEffect, useState, useContext } from "react";
-import { useRouter } from 'next/router';
 import Link from "next/link";
 import Title from '@/components/UI/Title';
-import Input from "@/components/UI/Input";
-import Button from "@/components/UI/Button";
-import Notification from "@/components/UI/Notification";
-import useFetch from '@/hooks/useFetch';
-import Selector from "@/components/UI/Selector";
+import ButtonLink from '@/components/UI/ButtonLink';
 
 
 const Index = () => {
@@ -16,13 +10,16 @@ const Index = () => {
     <>
       <Title title="Inscription" Level="h1" />
         <div className="form__group">
-          <label htmlFor="userType">Je suis </label>
-            <Link  href="/auth/register/freelance">un freelance</Link> 
-            <Link  href="/auth/register/company">une entreprise</Link>
+          <div>
+            <ButtonLink title="Je suis un freelance" className={"btn__register__freelance"} link="/auth/register/freelance"  />
+          </div>
+          <div>
+            <ButtonLink title="Je suis une entreprise" className={"btn__register__company"} link="/auth/register/company"  />
+          </div>
         </div>
        
       <p>
-        Vous avez déjà un compte ? <Link href="/auth/login">Connectez-vous ?</Link>
+        Vous avez déjà un compte ? <ButtonLink title="Se connecter" className={"btn__link"} link="/auth/login"  />
       </p>
     </>
   );

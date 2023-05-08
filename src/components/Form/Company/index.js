@@ -42,15 +42,15 @@ const Index = ({userForm, handleChange}) => {
             onChange={(e) => handleChange(e)}
             value={userForm?.companyCity}
         />
-        {/* companyPostCode */}
+        {/* companypostcode */}
         <Input
             label="Code postal de l'entreprise"
-            type="companyPostCode"     
-            name="companyPostCode"
+            type="companyPostcode"     
+            name="companyPostcode"
             placeholder="veuillez saisir le code postal de votre entreprise"
             isRequired={true}
             onChange={(e) => handleChange(e)}
-            value={userForm?.companyPostCode}
+            value={userForm?.companyPostcode}
         />
         {/* companyStatus */}
         <Input

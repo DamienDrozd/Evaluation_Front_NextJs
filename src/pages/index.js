@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "@/hooks/useFetch";
 import Loading from "@/components/UI/Loading";
-import FreelanceGrid from "@/components/freelance/FreelanceGrid";
+import FreelanceGrid from "@/components/user/FreelanceGrid";
 import styles from "./index.module.scss";
 import SearchBar from "@/components/UI/SearchBar";
 import ImageBanner from "@/components/UI/ImageBanner"

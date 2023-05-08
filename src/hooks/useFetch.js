@@ -9,7 +9,6 @@ const useFetch = ({ url, method, body, token }) => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      console.log(`${process.env.NEXT_PUBLIC_API_URL}${url}`)
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
         headers: {
           "Content-Type": "Application/json",

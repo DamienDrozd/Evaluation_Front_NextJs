@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from "../../../../public/images/auth.png";
+import Image from "../../../../public/images/auth.jpg";
 import styles from "./index.module.scss";
 
 

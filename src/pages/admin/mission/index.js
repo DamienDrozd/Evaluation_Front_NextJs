@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import useFetch from "@/hooks/useFetch";
+import Link from "next/link";
+import Loading from "@/components/UI/Loading";
 import Button from "@/components/UI/Button";
 import EditMission from "@/components/Edit/EditMission";
 import Card from "@/components/UI/Card";
-import CategoryCard from "@/components/UI/CategoryCard";
 import ImageBanner from "@/components/UI/ImageBanner";
-
 
 
 const Index = () => {  
@@ -13,7 +13,7 @@ const Index = () => {
     const [isOpen , setIsOpen] = useState(false);
     const [editMission, setEditMission] = useState();
     const [deleteMission, setDeleteMission] = useState();
-    const { fetchData : fetchMissions, data : dataMissions, error: errorMissions, loading: loadingMissions } = useFetch({ url: "/mission", method: "GET", token: token })
+    const { fetchData : fetchMissions, data : dataMissions, error: errorMissions, loading: loadingMissions } = useFetch({ url: "/mission/admin/", method: "GET", token: token })
     const { fetchData : fetchDeleteMission, data : dataDeleteMission, error: errorDeleteMission, loading: loadingDeleteMission } = useFetch({url:`/mission/${deleteMission?._id}`, method:"DELETE", token:token})
 
     useEffect(() => {  
@@ -21,7 +21,9 @@ const Index = () => {
         if (newToken) {
             setToken(newToken);
         }
+        fetchMissions();
     }, [])
+
 
     useEffect(() => {
         if (deleteMission) {
@@ -35,50 +37,29 @@ const Index = () => {
         }
     }, [dataDeleteMission])
 
-    useEffect(() => {
-        fetchMissions();
-    }, [token])
 
+
+
+
+    if(loadingMissions) <Loading/> 
+    if (errorMissions) console.log(errorMissions);
   
     return (
         <div>
             {
                 isOpen && (
-                    <EditMission setIsOpen={setIsOpen} mission={editMission} updateMissions={fetchMissions} />
+                    <EditMission setIsOpen={setIsOpen} Mission={editMission} updateMissions={fetchMissions} />
                 )
             }
-            <ImageBanner  title={`Missions`} image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
-
-            <Button title="Ajouter" className="btn__primary" type="button" handleClick={ 
-                () => {
-                    setIsOpen(true)
-                    setEditMission();
-                } } 
-            />
+            <ImageBanner  title="Missions" image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlZWxhbmNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
             { Array.isArray(dataMissions) && dataMissions.map(Mission => (
                 <Card key={Mission._id}>
-                    <h3>{Mission.title}</h3>
-                    <p>{Mission.description}</p>
-                    <p>Début de la mission : {new Date(Mission.date.start).toDateString()}</p>
-                    <p>Fin de la mission : {new Date(Mission.date.end).toDateString()}</p> 
-                    <p>{Mission.price}</p>
-                    {Mission?.jobs.length > 0 && (
-                        <p>jobs : {Mission?.jobs.map((job) => {
-                            return <CategoryCard key={job.id} title={job.name} className="category__job"/>
-                        }
-                        )}</p>
-                    )}
-                    {Mission?.skills.length > 0  && (
-                        <p>skills : {Mission?.skills.map((skill) => {
-                            return <CategoryCard key={skill.id} title={skill.name} className="category__skill"/>
-                        }
-                        )}</p>
-                    )}              
+                    <p>{Mission.name}</p>
                     <Button title="modifier" className="btn__primary" type="button" handleClick={ 
                         () => {
                             setIsOpen(true);
                             setEditMission(Mission);
-                        } 
+                        }
                     } />
                     <Button title="supprimer" className="btn__primary" type="button" handleClick={
                         () => {

@@ -1,0 +1,14 @@
+services:
+  app:
+    image: damiendrz/evaluation_api:latest
+    ports:
+      - 3030:3030
+    environment:
+      - MONGO_DB_USER=root
+      - MONGO_DB_PASSWORD=test
+      - PORT=3030
+      - JWT_SECRET=secret
+      - STACK=dev
+      - MONGO_DB_CLUSTER=@cluster0.yyakswb.mongodb.net
+      - EMAIL_SENDER=damien@laWEbox.com
+      - EMAIL_SENDER_PASSWORD=nyekllupznxoyuxe

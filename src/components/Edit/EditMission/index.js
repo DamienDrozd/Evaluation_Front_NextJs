@@ -38,9 +38,6 @@ const Index = ({ setIsOpen, mission, updateMissions }) => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log("token : ", token)
-        console.log("missionForm : ", missionForm)
-        console.log("edit : ", edit)
         if (token != undefined && token != null && token != ""){
             if (edit) {
                 fetchDataUpdate();
@@ -55,7 +52,6 @@ const Index = ({ setIsOpen, mission, updateMissions }) => {
         if(mission[e.target.name] === undefined) {
             mission[e.target.name] = []
         }
-        console.log(e.target.value)
         let appendObj = JSON.parse(e.target.value)
         if (mission[e.target.name].includes(appendObj.name) === false) {
             mission[e.target.name].push(appendObj)
@@ -68,7 +64,6 @@ const Index = ({ setIsOpen, mission, updateMissions }) => {
     const missionRemoveList = (e) => {
         let mission = {...missionForm}
         let removeObj = JSON.parse(e.target.value)
-        console.log(mission[e.target.name])
         let index = mission[e.target.name].findIndex(obj => JSON.stringify(obj) === JSON.stringify(removeObj))
         if (index > -1) {
             mission[e.target.name].splice(index, 1);
